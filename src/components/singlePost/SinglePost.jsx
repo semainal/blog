@@ -1,17 +1,38 @@
 
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom"
+
+
 import "./singlePost.css"
 
 export default function SinglePost() {
+    const location = useLocation()
+    const path = location.pathname.split("/")[2];
+    const [post, setPost] = useState({})
+    console.log(location)
+
+    useEffect(() => {
+        const getPost = async () => {
+        const res = await axios.post("/posts/" +  path);
+        setPost(res.data);
+        };
+        
+        getPost()},[path]);
+        useLocation()
   return (
     <div className="singlePost">
 
             <div className="singlePostWrapper">
-                <img src="https://images.pexels.com/photos/413707/pexels-photo-413707.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" 
-                alt="" 
-                className="singlePostImg" />
+                {post.photo && 
+                    <img src={post.photo}
+                    alt="" 
+                    className="singlePostImg" />
+                }
+                
 
                 <h1 className="singlePostTitle">
-                    Lorem ipsum dolor sit amet.
+                    {post.title}
             
                     <div className="singlePostEdit">
                         <i className="singlePostIcon fa-regular fa-pen-to-square"></i>
@@ -19,13 +40,15 @@ export default function SinglePost() {
                     </div>
                 </h1>
                 <div className="singlePostInfo">
-                    <span className="singlePostAuthor">Author: <b>Sema</b></span>
-                    <span className="singlePostDate">1 hour ago.</span>
+                    <span className="singlePostAuthor">Author: 
+                    <Link to={`/?user=${post.username}`} className="link">
+                        <b>{post.username}</b>
+                    </Link>
+                    </span>
+                    <span className="singlePostDate">{new Date(post.createdAt).toDateString()}</span>
                 </div>
                 <p className="singlePostDesc">
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias placeat, quidem voluptatum ratione incidunt perferendis natus harum? Aut, eos! Dolorum nisi impedit, atque quisquam fuga odio, quis autem dignissimos, sequi veniam saepe eaque reiciendis voluptatibus recusandae tenetur repudiandae. Dolor laborum beatae voluptate exercitationem quis ipsa provident consequatur? Alias, enim pariatur!
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolores, ex ipsa. Aspernatur, magnam obcaecati aliquam sit qui expedita hic neque aperiam nam eum totam unde libero ea iste deserunt voluptate facilis possimus voluptatum mollitia quis non. Repudiandae, asperiores totam provident architecto dicta, quibusdam molestias atque possimus, debitis reiciendis recusandae voluptate.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. A nihil voluptatum blanditiis consectetur alias perspiciatis quibusdam quisquam nesciunt ipsum totam ipsam reprehenderit magnam numquam asperiores temporibus, unde nemo dolorem. Eligendi exercitationem explicabo animi corrupti aperiam eum doloribus. Quaerat, ducimus voluptatem! Minima quibusdam dolor fugiat exercitationem veritatis corporis sapiente suscipit quaerat?
+                    {post.desc}
                 </p>
 
 

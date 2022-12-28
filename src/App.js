@@ -17,7 +17,7 @@ import Contact from "./pages/contact/Contact";
 
 
 function App() {
-  const user = true;
+  const user = false;
 
   return (
     <Router>

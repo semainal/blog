@@ -40,7 +40,7 @@
     color: white;
     border-radius: 5px;
     padding: 10px;
-    margin-bottom: 150px;
+    margin-bottom: 20px;
 }
 
 .registerLoginButton {
@@ -53,5 +53,12 @@
     padding: 10px;
     color: white;
     border-radius: 5px;
+
+}
+
+.errorSpan {
+  margin-bottom: 100px;
+  color:red;
+  font-size: 24px;
 
 }
