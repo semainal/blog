@@ -14,10 +14,12 @@ import {
 } from "react-router-dom";
 import About from "./pages/about/About";
 import Contact from "./pages/contact/Contact";
+import { Context } from "./context/Context";
+import { useContext } from "react";
 
 
 function App() {
-  const user = false;
+  const {user }= useContext(Context);
 
   return (
     <Router>
