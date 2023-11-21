@@ -1,0 +1,35 @@
+
+.contact {
+    display: flex;
+  
+}
+
+.contactWrapper {
+    
+    width: 1000px;
+    margin-left: 75px;
+    margin-top: 150px;
+    height: 450px;
+    margin-right: 75px;
+    background:linear-gradient(rgba(255,255,255,0.5),rgba(255,255,255,0.5)), 
+    url("https://images.pexels.com/photos/414660/pexels-photo-414660.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+    text-align: center;
+    justify-content: center;
+    flex-direction: column;
+    object-fit: cover;
+}
+
+.contactTitle {
+    margin-top: 50px;
+    font-size: 50px;
+    margin-bottom: 70px;
+}
+
+.contactInfo {
+    font-size: 20px;
+    line-height: 50px;
+}
+
+.contactIcon {
+    margin-right: 15px;
+}
